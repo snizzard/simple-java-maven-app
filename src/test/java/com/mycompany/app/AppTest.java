@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  */
 public class AppTest
 {
-
+    ZAPIConnect zapi = new ZAPIConnect("testProject");
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Before
@@ -32,10 +32,13 @@ public class AppTest
     @Test
     public void testAppMain()
     {
+        zapi.newExecution(3);
         App.main(null);
         try {
-            assertEquals("Hello World!" + System.getProperty("line.separator"), outContent.toString());
+            assertEquals("Hello_World!" + System.getProperty("line.separator"), outContent.toString());
         } catch (AssertionError e) {
+            String id = Integer.toString(zapi.currentExecution.getStepId(1));
+            zapi.updateStepResult(id, "2");
             fail("\"message\" is not \"Hello World!\"");
         }
     }
