@@ -37,7 +37,7 @@ public class AppTest
         try {
             assertEquals("Hello_World!" + System.getProperty("line.separator"), outContent.toString());
         } catch (AssertionError e) {
-            String id = Integer.toString(zapi.currentExecution.getStepId(1));
+            int id = zapi.currentExecution.getStepId(1);
             zapi.updateStepResult(id, "2");
             fail("\"message\" is not \"Hello World!\"");
         }

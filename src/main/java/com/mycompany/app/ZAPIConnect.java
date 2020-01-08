@@ -381,7 +381,7 @@ public class ZAPIConnect
      *  3: step is a Work-In-Progress
      *  4: step is BLOCKED for some reason
      */
-    public void updateStepResult(String stepResId, String status)
+    public void updateStepResult(int stepResId, String status)
     {
         /*
          *  status should be a string representation of one of these values:
@@ -391,7 +391,7 @@ public class ZAPIConnect
          *  3: step is a Work-In-Progress
          *  4: step is BLOCKED for some reason
          */
-        String url = zapiLatestUrl + String.format("/stepResult/%s", stepResId);
+        String url = zapiLatestUrl + String.format("/stepResult/%d", stepResId);
         String update = String.format("{\"status\":\"%s\"}", status);
         putZapiData(url, update);
     }
